@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Other States Eyeing Discord Bans — Marylandia Digital Gazette</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0f; --surface:#111118; --card:#16161f; --border:#252535;
+    --discord:#5865F2; --danger:#ed4245; --warn:#faa61a; --green:#3ba55c;
+    --text:#e8e8f0; --muted:#6e6e95; --accent:#eb459e; --gold:#f0c040;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:999;}
+
+  .ticker-wrap{background:var(--warn);overflow:hidden;white-space:nowrap;padding:7px 0;}
+  .ticker-label{display:inline-block;background:#000;color:var(--warn);font-family:'Space Mono',monospace;font-size:0.68rem;font-weight:700;padding:2px 12px;margin-right:1.5rem;letter-spacing:0.15em;}
+  .ticker-track{display:inline-block;animation:ticker 48s linear infinite;font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:#000;}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .fiction-banner{background:rgba(240,192,64,0.08);border-bottom:1px solid rgba(240,192,64,0.18);padding:0.55rem 6vw;font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--gold);letter-spacing:0.1em;text-align:center;}
+
+  nav{border-bottom:1px solid var(--border);padding:0 6vw;display:flex;gap:0;overflow-x:auto;background:rgba(10,10,15,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;padding:0.8rem 0;margin-right:2rem;white-space:nowrap;}
+  .nav-brand span{color:var(--discord);}
+  .nav-link{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:0.85rem 1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:color 0.2s,border-color 0.2s;text-decoration:none;display:block;}
+  .nav-link:hover,.nav-link.active{color:var(--text);border-bottom-color:var(--discord);}
+
+  .page{max-width:1100px;margin:0 auto;padding:0 6vw;}
+
+  .article-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .article-header-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 40%,rgba(250,166,26,0.07) 0%,transparent 65%);pointer-events:none;}
+  .breadcrumb{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:1.25rem;}
+  .breadcrumb a{color:var(--discord);text-decoration:none;}
+  .article-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .atag{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:2px;border:1px solid currentColor;}
+  .atag-national{color:var(--warn);}
+  .atag-policy{color:var(--discord);}
+
+  .article-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:0.93;letter-spacing:0.02em;margin-bottom:1.25rem;position:relative;z-index:1;}
+  .article-header h1 em{color:var(--warn);font-style:normal;}
+  .article-deck{font-size:1.05rem;color:var(--muted);max-width:640px;line-height:1.75;font-weight:300;position:relative;z-index:1;}
+  .article-meta{display:flex;align-items:center;gap:1.5rem;margin-top:1.5rem;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--muted);flex-wrap:wrap;position:relative;z-index:1;}
+  .article-meta span::before{content:'// ';color:var(--warn);}
+
+  .article-layout{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;padding:3rem 0;align-items:start;}
+  @media(max-width:800px){.article-layout{grid-template-columns:1fr;}}
+
+  .article-body h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin:2.5rem 0 0.75rem;color:var(--text);}
+  .article-body p{color:var(--muted);font-size:0.97rem;line-height:1.85;margin-bottom:1.1rem;font-weight:300;}
+  .article-body p strong{color:var(--text);font-weight:500;}
+  .article-body p em{color:var(--warn);font-style:italic;}
+
+  .blockquote{border-left:3px solid var(--warn);padding:1rem 1.5rem;margin:2rem 0;background:rgba(250,166,26,0.05);border-radius:0 6px 6px 0;}
+  .blockquote p{font-size:1.02rem!important;font-style:italic;color:var(--text)!important;line-height:1.6!important;margin-bottom:0.4rem!important;}
+  .blockquote-attr{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--muted);}
+
+  /* STATE CARDS */
+  .state-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;margin:2rem 0;}
+  .state-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+  .state-card:hover{border-color:rgba(250,166,26,0.4);transform:translateY(-3px);}
+  .state-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--state-color,var(--warn));}
+  .state-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;margin-bottom:0.2rem;}
+  .state-status{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;margin-bottom:0.75rem;padding:0.2em 0.7em;border-radius:2px;display:inline-block;}
+  .status-draft{background:rgba(250,166,26,0.12);color:var(--warn);border:1px solid rgba(250,166,26,0.3);}
+  .status-committee{background:rgba(88,101,242,0.12);color:var(--discord);border:1px solid rgba(88,101,242,0.3);}
+  .status-watching{background:rgba(110,110,149,0.12);color:var(--muted);border:1px solid rgba(110,110,149,0.3);}
+  .status-opposed{background:rgba(59,165,92,0.12);color:var(--green);border:1px solid rgba(59,165,92,0.3);}
+  .state-card p{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+  .state-card p strong{color:var(--text);}
+
+  /* MAP VISUAL */
+  .map-visual{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:2rem 0;text-align:center;}
+  .map-title{font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--warn);letter-spacing:0.15em;margin-bottom:1.5rem;}
+  .map-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-top:1.25rem;}
+  .legend-item{display:flex;align-items:center;gap:0.5rem;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--muted);}
+  .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+  /* ALERT */
+  .alert{border-radius:8px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;gap:1rem;align-items:flex-start;}
+  .alert-warn{background:rgba(250,166,26,0.07);border:1px solid rgba(250,166,26,0.2);}
+  .alert-info{background:rgba(88,101,242,0.07);border:1px solid rgba(88,101,242,0.2);}
+  .alert-danger{background:rgba(237,66,69,0.07);border:1px solid rgba(237,66,69,0.2);}
+  .alert-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+  .alert-title{font-family:'Space Mono',monospace;font-size:0.72rem;font-weight:700;margin-bottom:0.3rem;}
+  .alert-warn .alert-title{color:var(--warn);}
+  .alert-info .alert-title{color:var(--discord);}
+  .alert-danger .alert-title{color:var(--danger);}
+  .alert p{font-size:0.84rem;color:var(--muted);line-height:1.6;}
+
+  /* SIDEBAR */
+  .sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;}
+  .sidebar-card-title{font-family:'Space Mono',monospace;font-size:0.63rem;letter-spacing:0.15em;color:var(--warn);margin-bottom:0.9rem;text-transform:uppercase;}
+  .sidebar-card p{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0.6rem;}
+  .sidebar-card p:last-child{margin-bottom:0;}
+  .sidebar-card p strong{color:var(--text);}
+
+  .related-link{display:flex;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);align-items:flex-start;text-decoration:none;transition:background 0.2s;}
+  .related-link:last-child{border-bottom:none;padding-bottom:0;}
+  .related-link:hover .rl-title{color:var(--discord);}
+  .rl-icon{font-size:1.4rem;flex-shrink:0;}
+  .rl-tag{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:0.2rem;}
+  .rl-title{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text);line-height:1.4;transition:color 0.2s;}
+
+  footer{margin-top:4rem;padding:2rem 6vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--muted);letter-spacing:0.08em;}
+  .footer-note{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--muted);opacity:0.4;max-width:480px;text-align:right;line-height:1.7;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <span class="ticker-label">NATIONAL</span>
+  <span class="ticker-track">
+    FOUR STATES DRAFTING DISCORD BAN BILLS FOLLOWING MARYLANDIA'S LEAD &nbsp;•&nbsp; SHAPEMAN CONFIRMS LOBBYING TOUR CONTINUING NATIONWIDE &nbsp;•&nbsp; TECH INDUSTRY COALITION FORMS TO FIGHT COPYCAT LEGISLATION &nbsp;•&nbsp; FOUR STATES DRAFTING DISCORD BAN BILLS FOLLOWING MARYLANDIA'S LEAD &nbsp;•&nbsp; SHAPEMAN CONFIRMS LOBBYING TOUR CONTINUING NATIONWIDE &nbsp;•&nbsp; TECH INDUSTRY COALITION FORMS TO FIGHT COPYCAT LEGISLATION &nbsp;•&nbsp;
+  </span>
+</div>
+
+<div class="fiction-banner">⚠ FICTIONAL SATIRE — All names, events, and legislation depicted are entirely fictional and created for entertainment purposes only.</div>
+
+<nav>
+  <div class="nav-brand">MDG <span>//</span></div>
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="discord-ban.html">Discord Ban</a>
+  <a class="nav-link" href="legal-challenge.html">Legal Challenge</a>
+  <a class="nav-link active" href="other-states.html">Other States</a>
+  <a class="nav-link" href="gaming.html">Gaming</a>
+</nav>
+
+<div class="page">
+  <div class="article-header reveal">
+    <div class="article-header-bg"></div>
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="other-states.html">National</a> / Copycat Legislation</div>
+    <div class="article-tags">
+      <span class="atag atag-national">National</span>
+      <span class="atag atag-policy">Policy Watch</span>
+    </div>
+    <h1>The <em>Domino Effect:</em><br>States Now Lining Up to Copy Marylandia</h1>
+    <p class="article-deck">Barely two weeks after Governor Moor signed SB-441, legislative aides in four other states have confirmed that bills modeled on the Marylandia law are being drafted. Brad Shapeman has already scheduled lobbying trips. The tech industry is scrambling.</p>
+    <div class="article-meta">
+      <span>By P. Nguyen, National Correspondent</span>
+      <span>Washington Bureau</span>
+      <span>Platform Regulation Watch</span>
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <div class="article-body reveal">
+
+      <p>When Marylandia passed its Discord ban by four votes, observers on both sides of the debate treated it as a curiosity — a fringe measure from a mid-sized state that would be quickly struck down in court. That framing lasted approximately eleven days.</p>
+      <p>Since Governor Moor's signature, the Marylandia Digital Gazette has confirmed that <strong>at least four states</strong> have active efforts underway to draft legislation modeled on SB-441. In two of those states, bills have already been assigned preliminary numbers. In a third, a committee hearing has been scheduled. The fourth is still in informal discussions, but a legislative aide told us that their state's majority caucus is "watching Marylandia very closely."</p>
+      <p>At the center of all four efforts, as in Marylandia, is <strong>Brad Shapeman</strong> — who announced on his podcast the morning after the signing that he would be "taking the show on the road."</p>
+
+      <div class="blockquote">
+        <p>"Marylandia was the proof of concept. We showed that this can be done. Now we take it everywhere. Every parent in this country deserves what Marylandia's parents just got."</p>
+        <div class="blockquote-attr">— Brad Shapeman, The Shapeman Report, Episode 847</div>
+      </div>
+
+      <h2>The States to Watch</h2>
+      <p>Here's where things currently stand in each of the four states where copycat efforts are most advanced:</p>
+
+      <div class="state-grid">
+        <div class="state-card" style="--state-color:var(--warn);">
+          <div class="state-name">Westoria</div>
+          <span class="state-status status-committee">In Committee</span>
+          <p>The most advanced copycat effort. <strong>SB-112 "The Digital Youth Protection Act"</strong> passed the Westoria Senate Education Committee on a party-line vote last week. Shapeman testified in person for two hours. Floor vote expected within the month. Key difference from SB-441: the Westoria bill includes an explicit minor-only restriction, a change proponents say makes it legally stronger.</p>
+        </div>
+        <div class="state-card" style="--state-color:var(--discord);">
+          <div class="state-name">New Calvert</div>
+          <span class="state-status status-draft">Bill Drafted</span>
+          <p>A draft bill circulated among caucus leadership last week, though it has not yet been formally introduced. <strong>New Calvert's bill goes further than Marylandia's</strong>, proposing to ban Discord and "any substantially similar platform" — language that critics say could apply to dozens of other apps. The governor has not commented.</p>
+        </div>
+        <div class="state-card" style="--state-color:var(--warn);">
+          <div class="state-name">Lakeland</div>
+          <span class="state-status status-draft">Bill Drafted</span>
+          <p>A Lakeland state representative introduced HB-778 this week, though the bill has been referred to a subcommittee with no hearing date set. <strong>Shapeman's office confirmed he has a meeting scheduled</strong> with the bill's sponsor next month. The Lakeland governor has publicly expressed skepticism, calling the approach "legally risky."</p>
+        </div>
+        <div class="state-card" style="--state-color:var(--muted);">
+          <div class="state-name">Harrowfield</div>
+          <span class="state-status status-watching">Watching Closely</span>
+          <p>No bill yet, but a Harrowfield legislative aide told the Gazette their majority caucus has been "briefed on the Marylandia model" and will decide whether to move forward based on the outcome of Discord's federal legal challenge. <strong>"If the law survives court, we move,"</strong> the aide said.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚠️</div>
+        <div>
+          <div class="alert-title">The Legal Wildcard</div>
+          <p>Every state watching the Marylandia situation is doing exactly what Harrowfield's aide described — waiting on the federal court. If Discord's injunction is granted and SB-441 is blocked, momentum for copycat bills will likely stall. If the law survives initial court scrutiny, the pipeline could open wide.</p>
+        </div>
+      </div>
+
+      <h2>The Shapeman Roadshow</h2>
+      <p>Shapeman's travel schedule has become something of a political spectacle in its own right. Since the Marylandia signing, he has given paid speeches in three states, appeared before one legislative committee, and launched a 501(c)(4) nonprofit — the <em>Coalition for Children's Cognitive Freedom</em> — that is now formally registered as a lobbying entity in seven states.</p>
+      <p>The coalition's stated mission is "protecting the developing minds of American children from algorithmically optimized digital harm." Its initial operating budget, according to public filings, is <strong>$2.3 million</strong>, sourced from undisclosed donors.</p>
+      <p>Critics have noted the irony that the coalition communicates its anti-platform message almost entirely through social media platforms. When asked about this at a press availability in Westoria, Shapeman replied: "I'm not anti-platform. I'm anti-Discord. There's a difference. Some platforms are fine."</p>
+
+      <h2>The Industry Fights Back</h2>
+      <p>The technology industry, caught off guard by Marylandia's passage, is now mobilizing. A coalition of twenty-three technology companies — led by Discord but including several larger platforms that fear the precedent — announced the formation of the <strong>Open Platforms Alliance</strong> this week, with a stated budget of $15 million for "legislative education and legal defense across all 50 states."</p>
+      <p>The coalition's first move: retaining lobbyists in all four states where copycat bills are being drafted, and commissioning an independent review of the neuroscience literature cited in Shapeman's white paper.</p>
+      <p>That review, conducted by a team of researchers at three universities and released as a preprint, found that <strong>the studies Shapeman cited were largely correlational</strong>, relied on self-reported data, and did not support causal conclusions about Discord specifically — as opposed to screen time generally. Shapeman dismissed the review as "industry-funded propaganda," though the research team noted their funding came from a university endowment with no tech industry ties.</p>
+
+      <div class="blockquote">
+        <p>"The technology industry spent twenty years telling us their platforms were safe. Now they want us to trust their science too. Hard pass."</p>
+        <div class="blockquote-attr">— Brad Shapeman, responding to the Open Platforms Alliance preprint</div>
+      </div>
+
+      <h2>A Divided Public</h2>
+      <p>Polling across the four states shows a complicated picture. Majorities of parents — ranging from <strong>58% to 71%</strong> across the states surveyed — support "some form of restriction" on Discord for minors. But support drops sharply when the question specifies a complete statewide ban for all users: in that framing, support falls to between 31% and 44%.</p>
+      <p>This polling gap — between support for restrictions and support for an outright ban — may explain why legislators in states like Westoria have moved to modify the Marylandia model with a minor-only restriction rather than a wholesale platform ban. Whether a narrower bill would survive the same legal challenges is an open question that constitutional scholars are actively debating.</p>
+
+      <div class="alert alert-info">
+        <div class="alert-icon">📊</div>
+        <div>
+          <div class="alert-title">The Bottom Line</div>
+          <p>The national conversation Marylandia started isn't going away. Whether it results in more bans, more narrowly tailored restrictions, or simply more court cases will depend heavily on what Judge Holloway does with Discord's injunction request — and how fast Shapeman can move before that ruling lands.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// State Status Summary</div>
+        <p><strong>Westoria</strong> — In committee. Vote imminent.</p>
+        <p><strong>New Calvert</strong> — Bill drafted, not introduced.</p>
+        <p><strong>Lakeland</strong> — Introduced, no hearing date.</p>
+        <p><strong>Harrowfield</strong> — Waiting on federal court outcome.</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Shapeman's Coalition</div>
+        <p><strong>Name:</strong> Coalition for Children's Cognitive Freedom</p>
+        <p><strong>Type:</strong> 501(c)(4) nonprofit / lobbying entity</p>
+        <p><strong>Budget:</strong> $2.3M (initial)</p>
+        <p><strong>Registered in:</strong> 7 states</p>
+        <p><strong>Donors:</strong> Undisclosed</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Related Articles</div>
+        <a class="related-link" href="discord-ban.html">
+          <div class="rl-icon">🏛️</div>
+          <div><div class="rl-tag">Original Story</div><div class="rl-title">Discord Banned in Marylandia — Full Coverage</div></div>
+        </a>
+        <a class="related-link" href="legal-challenge.html">
+          <div class="rl-icon">⚖️</div>
+          <div><div class="rl-tag">Legal</div><div class="rl-title">Discord Rushes to Federal Court</div></div>
+        </a>
+        <a class="related-link" href="gaming.html">
+          <div class="rl-icon">🎮</div>
+          <div><div class="rl-tag">Culture</div><div class="rl-title">Marylandia Gaming Scene Thrives</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">MARYLANDIA DIGITAL GAZETTE</div>
+  <div class="footer-note">⚠ FICTIONAL SATIRE. All persons, legislation, events, and institutions depicted are entirely fictional. Created for entertainment purposes only.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
