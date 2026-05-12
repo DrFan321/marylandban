@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marylandia Digital Gazette</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #252535;
+    --discord: #5865F2;
+    --danger: #ed4245;
+    --warn: #faa61a;
+    --green: #3ba55c;
+    --text: #e8e8f0;
+    --muted: #6e6e95;
+    --accent: #eb459e;
+    --gold: #f0c040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+    pointer-events: none; z-index: 999;
+  }
+
+  /* TICKER */
+  .ticker-wrap { background: var(--danger); overflow: hidden; white-space: nowrap; padding: 7px 0; }
+  .ticker-label { display: inline-block; background: #fff; color: var(--danger); font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; padding: 2px 12px; margin-right: 1.5rem; letter-spacing: 0.15em; }
+  .ticker-track { display: inline-block; animation: ticker 50s linear infinite; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; color: white; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* FICTION BANNER */
+  .fiction-banner { background: rgba(240,192,64,0.08); border-bottom: 1px solid rgba(240,192,64,0.18); padding: 0.55rem 6vw; font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--gold); letter-spacing: 0.1em; text-align: center; }
+
+  /* MASTHEAD */
+  .masthead {
+    padding: 2.5rem 6vw 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(88,101,242,0.07) 0%, transparent 70%);
+  }
+  .masthead-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--muted); margin-bottom: 0.75rem; text-transform: uppercase; }
+  .masthead h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: 0.06em; line-height: 0.95; position: relative; z-index: 1; }
+  .masthead h1 span { color: var(--discord); }
+  .masthead-tagline { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.2em; margin-top: 0.75rem; text-transform: uppercase; position: relative; z-index: 1; }
+  .masthead-meta { display: flex; justify-content: center; gap: 2rem; margin-top: 1.25rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); flex-wrap: wrap; position: relative; z-index: 1; }
+  .masthead-meta span::before { content: '— '; }
+
+  /* NAV BAR */
+  nav { border-bottom: 1px solid var(--border); padding: 0 6vw; display: flex; gap: 0; overflow-x: auto; }
+  .nav-link { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.85rem 1.25rem; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: color 0.2s, border-color 0.2s; text-decoration: none; display: block; }
+  .nav-link:hover, .nav-link.active { color: var(--text); border-bottom-color: var(--discord); }
+
+  /* LAYOUT */
+  .page { padding: 0 6vw; max-width: 1400px; margin: 0 auto; }
+
+  /* HERO STORY */
+  .hero-story {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  @media (max-width: 900px) { .hero-story { grid-template-columns: 1fr; } }
+
+  .hero-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--danger); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+  .hero-label::before { content: '●'; animation: blink 1s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-story h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: 0.03em; line-height: 0.95; margin-bottom: 1rem; }
+  .hero-story h2 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .hero-story h2 a:hover { color: var(--discord); }
+
+  .hero-deck { font-size: 1rem; color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 560px; }
+  .hero-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); margin-top: 1.25rem; letter-spacing: 0.08em; }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--discord);
+    text-decoration: none;
+    border: 1px solid var(--discord);
+    padding: 0.5em 1.2em;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .read-more:hover { background: var(--discord); color: white; }
+
+  /* FEATURED ASIDE */
+  .featured-aside { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .aside-header { background: var(--surface); padding: 0.75rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--discord); border-bottom: 1px solid var(--border); }
+  .aside-item { padding: 1.1rem 1rem; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+  .aside-item:last-child { border-bottom: none; }
+  .aside-item:hover { background: var(--card); }
+  .aside-tag { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .aside-tag.discord { color: var(--discord); }
+  .aside-tag.tech { color: var(--green); }
+  .aside-tag.opinion { color: var(--accent); }
+  .aside-tag.law { color: var(--warn); }
+  .aside-item h4 { font-family: 'Space Mono', monospace; font-size: 0.8rem; line-height: 1.45; margin-bottom: 0.3rem; }
+  .aside-item h4 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .aside-item h4 a:hover { color: var(--discord); }
+  .aside-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  /* SECTION HEADER */
+  .section-header { display: flex; align-items: baseline; gap: 1rem; padding: 2rem 0 1.25rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .section-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; }
+  .section-header span { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; }
+
+  /* ARTICLE GRID */
+  .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+
+  .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color 0.25s, transform 0.25s; display: flex; flex-direction: column; }
+  .article-card:hover { border-color: rgba(88,101,242,0.4); transform: translateY(-3px); }
+
+  .card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; overflow: hidden; }
+  .card-img-discord { background: linear-gradient(135deg, #1e2060, #3d4fd6); }
+  .card-img-law { background: linear-gradient(135deg, #301010, #8b2020); }
+  .card-img-gaming { background: linear-gradient(135deg, #0d2010, #1a5c30); }
+  .card-img-states { background: linear-gradient(135deg, #201500, #6b4a00); }
+
+  .card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .card-tag { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .card-tag.discord { color: var(--discord); }
+  .card-tag.law { color: var(--danger); }
+  .card-tag.gaming { color: var(--green); }
+  .card-tag.states { color: var(--warn); }
+
+  .card-body h4 { font-family: 'Space Mono', monospace; font-size: 0.88rem; line-height: 1.45; margin-bottom: 0.6rem; }
+  .card-body h4 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .card-body h4 a:hover { color: var(--discord); }
+  .card-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; flex: 1; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  .card-author { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+  .card-read { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--discord); text-decoration: none; letter-spacing: 0.1em; }
+  .card-read:hover { text-decoration: underline; }
+
+  /* OPINION STRIP */
+  .opinion-strip { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 3rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; }
+  .opinion-icon { font-size: 2.5rem; }
+  .opinion-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 0.4rem; }
+  .opinion-strip h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .opinion-strip h4 a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .opinion-strip h4 a:hover { color: var(--accent); }
+  .opinion-strip p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* VOTE WIDGET */
+  .vote-widget { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--warn); border-radius: 8px; padding: 1.5rem; margin-bottom: 3rem; }
+  .vote-widget-title { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--warn); letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .vw-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
+  .vw-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; width: 30px; text-align: right; }
+  .vw-label.y { color: var(--danger); }
+  .vw-label.n { color: var(--green); }
+  .vw-bar-bg { flex: 1; height: 20px; background: rgba(255,255,255,0.04); border-radius: 2px; overflow: hidden; }
+  .vw-fill { height: 100%; border-radius: 2px; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); width: 0; display: flex; align-items: center; padding-left: 8px; font-family: 'Space Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.8); }
+  .vw-fill.y { background: var(--danger); }
+  .vw-fill.n { background: var(--green); }
+  .vw-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; width: 35px; text-align: right; }
+  .vw-num.y { color: var(--danger); }
+  .vw-num.n { color: var(--green); }
+  .vw-note { font-family: 'Space Mono', monospace; font-size: 0.58rem; color: var(--muted); margin-top: 0.5rem; }
+
+  /* FOOTER */
+  footer { margin-top: 4rem; padding: 2.5rem 6vw; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  @media (max-width: 700px) { footer { grid-template-columns: 1fr; } }
+  .footer-col h5 { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--discord); margin-bottom: 0.75rem; text-transform: uppercase; }
+  .footer-col p, .footer-col a { font-size: 0.8rem; color: var(--muted); line-height: 1.7; display: block; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom { padding: 1.25rem 6vw; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.08em; color: var(--muted); }
+  .footer-note { font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--muted); opacity: 0.4; max-width: 500px; text-align: right; line-height: 1.7; }
+
+  /* ANIMATIONS */
+  @keyframes fadein { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <span class="ticker-label">LATEST</span>
+  <span class="ticker-track">
+    DISCORD BAN SIGNED INTO LAW — EFFECTIVE IN 90 DAYS &nbsp;•&nbsp; DISCORD INC. FILES FOR EMERGENCY INJUNCTION IN FEDERAL COURT &nbsp;•&nbsp; FOUR STATES EYEING MARYLANDIA-STYLE BAN LEGISLATION &nbsp;•&nbsp; MARYLANDIA GAMING EXPO SELLS OUT DESPITE UNCERTAINTY &nbsp;•&nbsp; SHAPEMAN: "THIS IS JUST THE BEGINNING" &nbsp;•&nbsp; GOVERNOR MOOR TO APPEAR ON SHAPEMAN REPORT NEXT WEEK &nbsp;•&nbsp; DISCORD BAN SIGNED INTO LAW — EFFECTIVE IN 90 DAYS &nbsp;•&nbsp; DISCORD INC. FILES FOR EMERGENCY INJUNCTION IN FEDERAL COURT &nbsp;•&nbsp; FOUR STATES EYEING MARYLANDIA-STYLE BAN LEGISLATION &nbsp;•&nbsp; MARYLANDIA GAMING EXPO SELLS OUT DESPITE UNCERTAINTY &nbsp;•&nbsp; SHAPEMAN: "THIS IS JUST THE BEGINNING" &nbsp;•&nbsp; GOVERNOR MOOR TO APPEAR ON SHAPEMAN REPORT NEXT WEEK &nbsp;•&nbsp;
+  </span>
+</div>
+
+<div class="fiction-banner">⚠ FICTIONAL SATIRE — All names, events, and legislation depicted are entirely fictional and created for entertainment purposes only.</div>
+
+<div class="masthead">
+  <div class="masthead-bg"></div>
+  <div class="masthead-eyebrow">Est. 2019 // Annapolis, Marylandia</div>
+  <h1>MARYLANDIA <span>DIGITAL</span> GAZETTE</h1>
+  <div class="masthead-tagline">Your Source for Technology, Politics & Digital Culture in the Free State</div>
+  <div class="masthead-meta">
+    <span>Vol. 14, Issue 22</span>
+    <span>Annapolis, ML</span>
+    <span>Digital Edition</span>
+    <span>Est. 2019</span>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-link active" href="index.html">Home</a>
+  <a class="nav-link" href="discord-ban.html">Discord Ban</a>
+  <a class="nav-link" href="legal-challenge.html">Legal Challenge</a>
+  <a class="nav-link" href="other-states.html">Other States</a>
+  <a class="nav-link" href="gaming.html">Gaming</a>
+</nav>
+
+<div class="page">
+
+  <!-- HERO STORY -->
+  <div class="hero-story reveal">
+    <div>
+      <div class="hero-label">Top Story</div>
+      <h2><a href="discord-ban.html">Discord Banned in Marylandia After Razor-Thin 72–68 House Vote</a></h2>
+      <p class="hero-deck">Governor Wes Moor signed SB-441 into law late Tuesday night, making Marylandia the first state in the nation to issue a comprehensive ban on a major social platform. The bill passed by just four votes after weeks of intensive lobbying by pundit Brad Shapeman, who personally met with 19 undecided delegates.</p>
+      <div class="hero-byline">By C. Ortega &nbsp;//&nbsp; State Legislature, Annapolis &nbsp;//&nbsp; SB-441 Coverage</div>
+      <a class="read-more" href="discord-ban.html">READ FULL STORY →</a>
+    </div>
+    <div>
+      <div class="featured-aside">
+        <div class="aside-header">// Related Coverage</div>
+        <div class="aside-item">
+          <div class="aside-tag law">Legal</div>
+          <h4><a href="legal-challenge.html">Discord Inc. Files Emergency Injunction — "This Law Will Not Stand"</a></h4>
+          <p>The company's legal team moved within 48 hours of the Governor's signature, seeking to block enforcement before the 90-day clock expires.</p>
+        </div>
+        <div class="aside-item">
+          <div class="aside-tag discord">Policy</div>
+          <h4><a href="other-states.html">Four States Now Drafting Their Own Discord Ban Bills</a></h4>
+          <p>Shapeman's roadshow continues — and legislative aides in neighboring states say their phones haven't stopped ringing.</p>
+        </div>
+        <div class="aside-item">
+          <div class="aside-tag tech">Gaming</div>
+          <h4><a href="gaming.html">Marylandia's Gaming Scene Is Thriving — And Has Nothing to Do With Discord</a></h4>
+          <p>Indie devs, esports teams, and LAN cafés are putting the state on the national map, ban or no ban.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOTE WIDGET + MORE STORIES -->
+  <div style="display:grid; grid-template-columns: 1fr 260px; gap: 2.5rem; align-items: start; padding-top: 2rem;">
+  <div>
+
+  <!-- SECTION: LATEST -->
+  <div class="section-header reveal">
+    <h3>Latest Stories</h3>
+    <span>// All Coverage</span>
+  </div>
+
+  <div class="article-grid reveal">
+    <div class="article-card">
+      <div class="card-img card-img-law">⚖️</div>
+      <div class="card-body">
+        <div class="card-tag law">Legal</div>
+        <h4><a href="legal-challenge.html">Discord Inc. Rushes to Federal Court as 90-Day Countdown Begins</a></h4>
+        <p>Lawyers for the platform argue SB-441 violates the First Amendment and the Commerce Clause. A federal judge has agreed to hear arguments on an expedited basis.</p>
+        <div class="card-footer">
+          <span class="card-author">By T. Harmon</span>
+          <a class="card-read" href="legal-challenge.html">Read →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-img card-img-states">🗺️</div>
+      <div class="card-body">
+        <div class="card-tag states">National</div>
+        <h4><a href="other-states.html">Copycat Legislation: The States Already Drafting Discord Bans</a></h4>
+        <p>From the plains to the coast, state legislators inspired by Marylandia's move are introducing their own versions of SB-441. Here's where things stand.</p>
+        <div class="card-footer">
+          <span class="card-author">By P. Nguyen</span>
+          <a class="card-read" href="other-states.html">Read →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <div class="card-img card-img-gaming">🎮</div>
+      <div class="card-body">
+        <div class="card-tag gaming">Gaming</div>
+        <h4><a href="gaming.html">Pixels & Pride: Marylandia's Gaming Industry Doesn't Need Discord to Win</a></h4>
+        <p>A deep dive into the state's booming indie dev scene, competitive esports programs, and the LAN café renaissance that's been building for years.</p>
+        <div class="card-footer">
+          <span class="card-author">By D. Kim</span>
+          <a class="card-read" href="gaming.html">Read →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div style="padding-top: 2rem;">
+    <div class="vote-widget reveal" id="vw">
+      <div class="vote-widget-title">// SB-441 HOUSE VOTE</div>
+      <div class="vw-row">
+        <div class="vw-label y">YEA</div>
+        <div class="vw-bar-bg"><div class="vw-fill y" data-w="51.4" id="vw-y">72</div></div>
+        <div class="vw-num y">72</div>
+      </div>
+      <div class="vw-row">
+        <div class="vw-label n">NAY</div>
+        <div class="vw-bar-bg"><div class="vw-fill n" data-w="48.6" id="vw-n">68</div></div>
+        <div class="vw-num n">68</div>
+      </div>
+      <div class="vw-note">// Passed by 4 votes. 6 absent.</div>
+    </div>
+
+    <div class="featured-aside reveal">
+      <div class="aside-header">// Quick Links</div>
+      <div class="aside-item"><div class="aside-tag discord">Ban Text</div><h4><a href="discord-ban.html">Full SB-441 Coverage</a></h4></div>
+      <div class="aside-item"><div class="aside-tag law">Courts</div><h4><a href="legal-challenge.html">Legal Challenge Tracker</a></h4></div>
+      <div class="aside-item"><div class="aside-tag states">Policy</div><h4><a href="other-states.html">Other States Watch</a></h4></div>
+      <div class="aside-item"><div class="aside-tag tech">Culture</div><h4><a href="gaming.html">Gaming in Marylandia</a></h4></div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-col">
+    <h5>Coverage</h5>
+    <a href="discord-ban.html">Discord Ban — SB-441</a>
+    <a href="legal-challenge.html">Legal Challenge</a>
+    <a href="other-states.html">Other States</a>
+    <a href="gaming.html">Gaming & Culture</a>
+  </div>
+  <div class="footer-col">
+    <h5>About</h5>
+    <p>The Marylandia Digital Gazette covers technology, digital culture, and policy in the great fictional state of Marylandia.</p>
+  </div>
+  <div class="footer-col">
+    <h5>Contact</h5>
+    <p>tips@mdgazette.ml</p>
+    <p>letters@mdgazette.ml</p>
+    <p>Annapolis, Marylandia</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-brand">MDG</div>
+  <div class="footer-note">⚠ FICTIONAL SATIRE. All persons, legislation, events, and institutions depicted are entirely fictional. Created for entertainment purposes only.</div>
+</div>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+  const voteObs = new IntersectionObserver(e => {
+    if (e[0].isIntersecting) {
+      document.querySelectorAll('.vw-fill').forEach(b => { setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 400); });
+      voteObs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  voteObs.observe(document.getElementById('vw'));
+</script>
+</body>
+</html>
