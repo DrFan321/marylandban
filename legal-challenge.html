@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discord Legal Challenge — Marylandia Digital Gazette</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #111118; --card: #16161f; --border: #252535;
+    --discord: #5865F2; --danger: #ed4245; --warn: #faa61a; --green: #3ba55c;
+    --text: #e8e8f0; --muted: #6e6e95; --accent: #eb459e; --gold: #f0c040;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  body::before { content:''; position:fixed; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px); pointer-events:none; z-index:999; }
+
+  .ticker-wrap { background: #3d47c4; overflow:hidden; white-space:nowrap; padding:7px 0; }
+  .ticker-label { display:inline-block; background:#fff; color:#3d47c4; font-family:'Space Mono',monospace; font-size:0.68rem; font-weight:700; padding:2px 12px; margin-right:1.5rem; letter-spacing:0.15em; }
+  .ticker-track { display:inline-block; animation:ticker 45s linear infinite; font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; color:white; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .fiction-banner { background:rgba(240,192,64,0.08); border-bottom:1px solid rgba(240,192,64,0.18); padding:0.55rem 6vw; font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--gold); letter-spacing:0.1em; text-align:center; }
+
+  nav { border-bottom:1px solid var(--border); padding:0 6vw; display:flex; gap:0; overflow-x:auto; background:rgba(10,10,15,0.97); position:sticky; top:0; z-index:100; backdrop-filter:blur(10px); }
+  .nav-brand { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; padding:0.8rem 0; margin-right:2rem; white-space:nowrap; }
+  .nav-brand span { color:var(--discord); }
+  .nav-link { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:0.85rem 1rem; border-bottom:2px solid transparent; cursor:pointer; white-space:nowrap; transition:color 0.2s,border-color 0.2s; text-decoration:none; display:block; }
+  .nav-link:hover, .nav-link.active { color:var(--text); border-bottom-color:var(--discord); }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 6vw; }
+
+  /* ARTICLE HEADER */
+  .article-header { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .article-header-bg { position:absolute; inset:0; background:radial-gradient(ellipse 70% 80% at 80% 50%, rgba(88,101,242,0.08) 0%, transparent 65%); pointer-events:none; }
+
+  .breadcrumb { font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:1.25rem; }
+  .breadcrumb a { color:var(--discord); text-decoration:none; }
+  .breadcrumb a:hover { text-decoration:underline; }
+
+  .article-tags { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .atag { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.25em 0.8em; border-radius:2px; border:1px solid currentColor; }
+  .atag-law { color:var(--danger); }
+  .atag-discord { color:var(--discord); }
+  .atag-breaking { color:var(--warn); background:rgba(250,166,26,0.08); }
+
+  .article-header h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,6vw,5.5rem); line-height:0.93; letter-spacing:0.02em; margin-bottom:1.25rem; position:relative; z-index:1; }
+  .article-header h1 em { color:var(--danger); font-style:normal; }
+
+  .article-deck { font-size:1.1rem; color:var(--muted); max-width:640px; line-height:1.75; font-weight:300; position:relative; z-index:1; }
+  .article-meta { display:flex; align-items:center; gap:1.5rem; margin-top:1.5rem; font-family:'Space Mono',monospace; font-size:0.62rem; color:var(--muted); flex-wrap:wrap; position:relative; z-index:1; }
+  .article-meta span::before { content:'// '; color:var(--discord); }
+
+  /* TWO-COL LAYOUT */
+  .article-layout { display:grid; grid-template-columns:1fr 300px; gap:3.5rem; padding:3rem 0; align-items:start; }
+  @media (max-width:800px) { .article-layout { grid-template-columns:1fr; } }
+
+  /* BODY */
+  .article-body h2 { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.05em; margin:2.5rem 0 0.75rem; color:var(--text); }
+  .article-body p { color:var(--muted); font-size:0.97rem; line-height:1.85; margin-bottom:1.1rem; font-weight:300; }
+  .article-body p strong { color:var(--text); font-weight:500; }
+  .article-body p em { color:var(--discord); font-style:italic; }
+
+  .blockquote { border-left:3px solid var(--danger); padding:1rem 1.5rem; margin:2rem 0; background:rgba(237,66,69,0.05); border-radius:0 6px 6px 0; }
+  .blockquote p { font-size:1.05rem !important; font-style:italic; color:var(--text) !important; line-height:1.6 !important; margin-bottom:0.4rem !important; }
+  .blockquote-attr { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--muted); }
+
+  .blockquote.blue { border-left-color:var(--discord); background:rgba(88,101,242,0.05); }
+
+  /* STATUS TRACKER */
+  .status-tracker { background:var(--surface); border:1px solid var(--border); border-top:3px solid var(--discord); border-radius:8px; padding:1.5rem; margin:2rem 0; }
+  .st-title { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--discord); letter-spacing:0.15em; margin-bottom:1.25rem; }
+  .st-item { display:flex; gap:1rem; align-items:flex-start; padding:0.75rem 0; border-bottom:1px solid var(--border); }
+  .st-item:last-child { border-bottom:none; padding-bottom:0; }
+  .st-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+  .st-dot.done { background:var(--green); box-shadow:0 0 6px var(--green); }
+  .st-dot.active { background:var(--warn); box-shadow:0 0 8px var(--warn); animation:pulse-dot 1.5s ease infinite; }
+  .st-dot.pending { background:var(--border); }
+  @keyframes pulse-dot { 0%,100%{box-shadow:0 0 4px var(--warn)} 50%{box-shadow:0 0 14px var(--warn)} }
+  .st-label { font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--text); margin-bottom:0.2rem; }
+  .st-desc { font-size:0.8rem; color:var(--muted); line-height:1.5; }
+
+  /* SIDEBAR */
+  .sidebar-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1.5rem; }
+  .sidebar-card-title { font-family:'Space Mono',monospace; font-size:0.63rem; letter-spacing:0.15em; color:var(--discord); margin-bottom:0.9rem; text-transform:uppercase; }
+  .sidebar-card p { font-size:0.82rem; color:var(--muted); line-height:1.6; margin-bottom:0.6rem; }
+  .sidebar-card p:last-child { margin-bottom:0; }
+  .sidebar-card p strong { color:var(--text); }
+
+  .related-link { display:flex; gap:0.75rem; padding:0.75rem 0; border-bottom:1px solid var(--border); align-items:flex-start; text-decoration:none; transition:background 0.2s; }
+  .related-link:last-child { border-bottom:none; padding-bottom:0; }
+  .related-link:hover .rl-title { color:var(--discord); }
+  .rl-icon { font-size:1.4rem; flex-shrink:0; }
+  .rl-tag { font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); letter-spacing:0.1em; margin-bottom:0.2rem; }
+  .rl-title { font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--text); line-height:1.4; transition:color 0.2s; }
+
+  /* ALERT */
+  .alert { border-radius:8px; padding:1.25rem 1.5rem; margin:2rem 0; display:flex; gap:1rem; align-items:flex-start; }
+  .alert-warn { background:rgba(250,166,26,0.07); border:1px solid rgba(250,166,26,0.2); }
+  .alert-info { background:rgba(88,101,242,0.07); border:1px solid rgba(88,101,242,0.2); }
+  .alert-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+  .alert-title { font-family:'Space Mono',monospace; font-size:0.72rem; font-weight:700; margin-bottom:0.3rem; }
+  .alert-warn .alert-title { color:var(--warn); }
+  .alert-info .alert-title { color:var(--discord); }
+  .alert p { font-size:0.84rem; color:var(--muted); line-height:1.6; }
+
+  /* FOOTER */
+  footer { margin-top:4rem; padding:2rem 6vw; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-brand { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--muted); letter-spacing:0.08em; }
+  .footer-note { font-family:'Space Mono',monospace; font-size:0.55rem; color:var(--muted); opacity:0.4; max-width:480px; text-align:right; line-height:1.7; }
+
+  @keyframes fadein { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <span class="ticker-label">LEGAL</span>
+  <span class="ticker-track">
+    DISCORD FILES EMERGENCY INJUNCTION IN MARYLANDIA FEDERAL DISTRICT COURT &nbsp;•&nbsp; HEARING SET FOR EXPEDITED REVIEW &nbsp;•&nbsp; ATTORNEY GENERAL PLEDGES FULL DEFENSE OF SB-441 &nbsp;•&nbsp; FIRST AMENDMENT SCHOLARS DIVIDED ON MERITS &nbsp;•&nbsp; DISCORD FILES EMERGENCY INJUNCTION IN MARYLANDIA FEDERAL DISTRICT COURT &nbsp;•&nbsp; HEARING SET FOR EXPEDITED REVIEW &nbsp;•&nbsp; ATTORNEY GENERAL PLEDGES FULL DEFENSE OF SB-441 &nbsp;•&nbsp; FIRST AMENDMENT SCHOLARS DIVIDED ON MERITS &nbsp;•&nbsp;
+  </span>
+</div>
+
+<div class="fiction-banner">⚠ FICTIONAL SATIRE — All names, events, and legislation depicted are entirely fictional and created for entertainment purposes only.</div>
+
+<nav>
+  <div class="nav-brand">MDG <span>//</span></div>
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="discord-ban.html">Discord Ban</a>
+  <a class="nav-link active" href="legal-challenge.html">Legal Challenge</a>
+  <a class="nav-link" href="other-states.html">Other States</a>
+  <a class="nav-link" href="gaming.html">Gaming</a>
+</nav>
+
+<div class="page">
+  <div class="article-header reveal">
+    <div class="article-header-bg"></div>
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="legal-challenge.html">Legal</a> / Discord v. Marylandia</div>
+    <div class="article-tags">
+      <span class="atag atag-breaking">Breaking</span>
+      <span class="atag atag-law">Federal Court</span>
+      <span class="atag atag-discord">Discord Inc.</span>
+    </div>
+    <h1>Discord Inc. Rushes to<br>Federal Court — <em>"This Law Will Not Stand"</em></h1>
+    <p class="article-deck">Within 48 hours of Governor Moor's signature, Discord's legal team filed for an emergency injunction in the Marylandia Federal District Court, arguing SB-441 is an unconstitutional infringement on free speech and interstate commerce.</p>
+    <div class="article-meta">
+      <span>By T. Harmon, Legal Correspondent</span>
+      <span>Federal Courts, Annapolis</span>
+      <span>Discord v. State of Marylandia</span>
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <div class="article-body reveal">
+
+      <div class="status-tracker">
+        <div class="st-title">// CASE STATUS TRACKER — Discord v. State of Marylandia</div>
+        <div class="st-item"><div class="st-dot done"></div><div><div class="st-label">SB-441 Signed into Law</div><div class="st-desc">Governor Moor signs at 11:47 PM. Effective date set 90 days out.</div></div></div>
+        <div class="st-item"><div class="st-dot done"></div><div><div class="st-label">Emergency Injunction Filed</div><div class="st-desc">Discord Inc. files in Marylandia Federal District Court, 36 hours after signing.</div></div></div>
+        <div class="st-item"><div class="st-dot done"></div><div><div class="st-label">Judge Assigns Expedited Schedule</div><div class="st-desc">Judge C. Holloway agrees to hear arguments before enforcement date.</div></div></div>
+        <div class="st-item"><div class="st-dot active"></div><div><div class="st-label">Briefing Period Underway ← CURRENT</div><div class="st-desc">Both sides submitting legal briefs. Amicus filings open to third parties.</div></div></div>
+        <div class="st-item"><div class="st-dot pending"></div><div><div class="st-label">Oral Arguments Scheduled</div><div class="st-desc">Pending. Expected before the 90-day enforcement deadline.</div></div></div>
+        <div class="st-item"><div class="st-dot pending"></div><div><div class="st-label">District Court Ruling</div><div class="st-desc">Pending. Either side may appeal to the Circuit Court.</div></div></div>
+      </div>
+
+      <h2>The Filing</h2>
+      <p>Discord's legal team moved with unusual speed. Less than <strong>36 hours</strong> after Governor Moor's late-night signing, the company's outside counsel filed a 94-page emergency motion for a preliminary injunction in the Marylandia Federal District Court, accompanied by three expert declarations and a request for expedited briefing.</p>
+      <p>The core argument is straightforward, if sweeping: SB-441 is unconstitutional on its face. The filing rests on two primary pillars — a <strong>First Amendment</strong> claim that the law restricts protected speech based on content, and a <strong>Commerce Clause</strong> claim that Marylandia cannot unilaterally regulate an interstate platform that operates across all 50 states.</p>
+
+      <div class="blockquote blue">
+        <p>"Marylandia has attempted to do what the Constitution expressly forbids — to act as an editor for the entire internet within its borders. No state may do this. No state has ever successfully done this. This law will not stand."</p>
+        <div class="blockquote-attr">— Discord Inc. official statement accompanying the filing</div>
+      </div>
+
+      <h2>The First Amendment Argument</h2>
+      <p>The First Amendment challenge is considered Discord's strongest claim by most legal observers. The filing argues that SB-441 is a <strong>content-based restriction</strong> — it targets Discord specifically because of the nature of communication it facilitates, not because of any neutral, content-agnostic safety concern.</p>
+      <p>Under existing Supreme Court precedent, content-based speech restrictions are subject to strict scrutiny — the highest and most demanding standard of judicial review. To survive, the government must show the law serves a <strong>compelling state interest</strong> and is <strong>narrowly tailored</strong> to achieve it. Discord's lawyers argue Marylandia can satisfy neither requirement.</p>
+      <p>"The state's asserted interest — protecting children's cognitive development — is not itself invalid," the brief concedes, "but SB-441 is a sledgehammer applied to a nail. It bans an entire platform for <em>all users</em>, not just minors, based on speculative and scientifically contested harms."</p>
+
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚖️</div>
+        <div>
+          <div class="alert-title">The "Compelling Interest" Problem</div>
+          <p>Marylandia's AG will argue child welfare is a compelling state interest. Discord will counter that the law's overbreadth — banning the platform for adults too, not just minors — makes it impossible to survive strict scrutiny regardless of the interest cited.</p>
+        </div>
+      </div>
+
+      <h2>The Commerce Clause Argument</h2>
+      <p>The second pillar may prove equally decisive. The <strong>Dormant Commerce Clause</strong> doctrine prohibits states from passing laws that unduly burden interstate commerce — and courts have repeatedly applied it to internet regulations.</p>
+      <p>Discord's filing points to a line of cases holding that states cannot impose their own regulatory regimes on internet platforms that operate nationally, because doing so would force companies to comply with a patchwork of 50 different state laws — effectively allowing any single state to regulate the entire internet.</p>
+      <p>"If Marylandia's law stands," the brief argues, "every state in the union gains the power to ban any platform it dislikes. The internet as we know it — and the national economy it supports — cannot function under that regime."</p>
+
+      <h2>The State's Defense</h2>
+      <p>Attorney General <strong>Phyllis Okafor</strong> announced her office would mount a "full and vigorous defense" of SB-441, and her initial response brief — filed just two days after Discord's motion — was notably aggressive in tone.</p>
+      <p>The AG's office argues that the state's <strong>police power</strong> to protect the health and welfare of its citizens, particularly minors, has long been recognized as among the broadest powers a state possesses. The brief cites alcohol and tobacco regulations, age-gating on adult content, and compulsory education laws as precedents for states restricting access to otherwise legal products in the name of youth protection.</p>
+
+      <div class="blockquote">
+        <p>"Discord is not a newspaper. It is not a public square. It is a privately operated platform that Marylandia residents access through private networks. The state has every right to regulate what enters its children's homes through those networks."</p>
+        <div class="blockquote-attr">— AG Phyllis Okafor, press conference responding to the injunction filing</div>
+      </div>
+
+      <h2>What Legal Scholars Are Saying</h2>
+      <p>Constitutional law professors have lined up on both sides, though the weight of commentary appears to favor Discord's position — at least at the district court level.</p>
+      <p><strong>Prof. Adaeze Nwosu</strong> of Annapolis School of Law, who specializes in First Amendment and technology law, called the law "a well-intentioned statute with a near-fatal drafting problem." She noted that the bill's failure to distinguish between minors and adults when imposing the ban would likely doom it under any meaningful scrutiny standard.</p>
+      <p>On the other side, <strong>Prof. Gerald Fitch</strong> of Marylandia State University argued that courts have historically deferred to states on youth protection measures and that Discord's Commerce Clause argument "overstates how settled that doctrine really is in the digital context."</p>
+
+      <div class="alert alert-info">
+        <div class="alert-icon">📋</div>
+        <div>
+          <div class="alert-title">What Happens If the Injunction Is Granted?</div>
+          <p>If Judge Holloway grants the preliminary injunction, SB-441's enforcement would be paused while the full case proceeds — potentially for months or years. Discord would remain accessible in Marylandia during that time. The law would not be struck down permanently; it would simply be on hold pending a final ruling.</p>
+        </div>
+      </div>
+
+      <h2>The Shapeman Response</h2>
+      <p>Brad Shapeman, whose lobbying campaign was central to the bill's passage, was characteristically unimpressed by the legal challenge. In a post on his social media platform of choice — notably, not Discord — he called the filing "a billion-dollar company throwing lawyers at the democratic process."</p>
+      <p>He added, in a follow-up post, that he was <strong>"already in conversations"</strong> with legal groups interested in defending the law as amicus parties and predicted that the case would ultimately reach the Supreme Court — where, he argued, the current bench would be sympathetic to states' rights arguments on platform regulation.</p>
+      <p>Legal observers noted, carefully, that predicting Supreme Court outcomes is an inexact science.</p>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Key Figures</div>
+        <p><strong>Judge C. Holloway</strong> — Assigned to the case. Known for methodical, lengthy opinions. Has ruled on two prior tech-related cases.</p>
+        <p><strong>AG Phyllis Okafor</strong> — Defending SB-441. Former federal prosecutor, first-term AG.</p>
+        <p><strong>Discord Lead Counsel</strong> — Outside firm Hartwell & Pryce LLP, known for First Amendment litigation.</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// The Key Legal Questions</div>
+        <p><strong>1.</strong> Is SB-441 a content-based speech restriction subject to strict scrutiny?</p>
+        <p><strong>2.</strong> Does the law impermissibly burden interstate commerce?</p>
+        <p><strong>3.</strong> Does Marylandia's interest in protecting children justify a complete platform ban for all users?</p>
+        <p><strong>4.</strong> Can ISPs be compelled to act as enforcers of the ban without running afoul of federal telecommunications law?</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Related Articles</div>
+        <a class="related-link" href="discord-ban.html">
+          <div class="rl-icon">🏛️</div>
+          <div><div class="rl-tag">Ban Coverage</div><div class="rl-title">Discord Banned in Marylandia — Full Story</div></div>
+        </a>
+        <a class="related-link" href="other-states.html">
+          <div class="rl-icon">🗺️</div>
+          <div><div class="rl-tag">National</div><div class="rl-title">Four States Now Drafting Copycat Bans</div></div>
+        </a>
+        <a class="related-link" href="gaming.html">
+          <div class="rl-icon">🎮</div>
+          <div><div class="rl-tag">Culture</div><div class="rl-title">Marylandia Gaming Scene Thrives</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">MARYLANDIA DIGITAL GAZETTE</div>
+  <div class="footer-note">⚠ FICTIONAL SATIRE. All persons, legislation, events, and institutions depicted are entirely fictional. Created for entertainment purposes only.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);} }), {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
