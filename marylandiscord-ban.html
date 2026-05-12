@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISCORD BANNED IN MARYLAND — Breaking News</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #252535;
+    --discord: #5865F2;
+    --discord-dim: #3d47c4;
+    --danger: #ed4245;
+    --warn: #faa61a;
+    --green: #3ba55c;
+    --text: #e8e8f0;
+    --muted: #6e6e95;
+    --accent: #eb459e;
+    --gold: #f0c040;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* SCANLINES */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* BREAKING NEWS TICKER */
+  .ticker-wrap {
+    background: var(--danger);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .ticker-label {
+    display: inline-block;
+    background: #fff;
+    color: var(--danger);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 12px;
+    margin-right: 1.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 40s linear infinite;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: white;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* NAV */
+  nav {
+    padding: 1rem 7vw;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text);
+  }
+
+  .nav-brand span { color: var(--discord); }
+
+  .nav-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 7vw 4rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 40%, rgba(88,101,242,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 5% 70%, rgba(237,66,69,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 55px 55px;
+    opacity: 0.2;
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    animation: fadein 0.5s ease both;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3em 0.8em;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+  }
+
+  .tag-breaking { color: var(--danger); border-color: var(--danger); background: rgba(237,66,69,0.1); }
+  .tag-state { color: var(--discord); border-color: var(--discord); background: rgba(88,101,242,0.1); }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+    animation: fadein 0.7s ease 0.1s both;
+  }
+
+  h1 em { color: var(--discord); font-style: normal; }
+  h1 .red { color: var(--danger); }
+
+  .hero-deck {
+    max-width: 660px;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--muted);
+    line-height: 1.75;
+    margin-top: 1.5rem;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+    animation: fadein 0.8s ease 0.25s both;
+  }
+
+  .hero-meta {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+    animation: fadein 0.8s ease 0.4s both;
+  }
+
+  .hero-meta span::before { content: '// '; color: var(--discord); }
+
+  /* VOTE SCOREBOARD */
+  .vote-board {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--warn);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vote-board::before {
+    content: 'VOTE RESULT';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--warn);
+  }
+
+  .vote-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .vote-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .vote-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 50px;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .vote-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    text-align: right;
+  }
+
+  .vote-label.yea { color: var(--danger); }
+  .vote-label.nay { color: var(--green); }
+  .vote-label.abs { color: var(--muted); }
+
+  .vote-bar-bg {
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .vote-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+    width: 0;
+  }
+
+  .fill-yea { background: linear-gradient(90deg, #b03033, var(--danger)); }
+  .fill-nay { background: linear-gradient(90deg, #267a3f, var(--green)); }
+  .fill-abs { background: linear-gradient(90deg, #444, #666); }
+
+  .vote-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    text-align: right;
+  }
+
+  .vote-count.yea { color: var(--danger); }
+  .vote-count.nay { color: var(--green); }
+  .vote-count.abs { color: var(--muted); }
+
+  .vote-footnote {
+    margin-top: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* LAYOUT */
+  main { padding: 0 7vw; }
+  section { padding: 4.5rem 0; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.63rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--discord);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  /* TWO-COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    nav { padding: 1rem 5vw; }
+    .hero { padding: 3.5rem 5vw 3rem; }
+    main { padding: 0 5vw; }
+  }
+
+  /* PROSE */
+  .prose p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+    font-weight: 300;
+  }
+
+  .prose p strong { color: var(--text); font-weight: 500; }
+  .prose p em { color: var(--discord); font-style: italic; }
+
+  /* QUOTE BLOCK */
+  .blockquote {
+    border-left: 3px solid var(--discord);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(88,101,242,0.06);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .blockquote p {
+    font-size: 1.05rem !important;
+    font-style: italic;
+    color: var(--text) !important;
+    line-height: 1.6 !important;
+  }
+
+  .blockquote-attr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* PROFILE CARDS */
+  .profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .profile-card:hover {
+    border-color: rgba(88,101,242,0.5);
+    transform: translateY(-4px);
+  }
+
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .profile-title {
+    font-size: 0.75rem;
+    color: var(--discord);
+    margin-bottom: 0.75rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .profile-bio {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--discord), var(--border));
+  }
+
+  .tl-event {
+    position: relative;
+    padding: 0 0 2.5rem 1.5rem;
+  }
+
+  .tl-event::before {
+    content: '';
+    position: absolute;
+    left: -0.4rem;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--discord);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--discord);
+  }
+
+  .tl-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--discord);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* STATS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2.5rem 0;
+  }
+
+  .stat { background: var(--surface); padding: 1.75rem 1.5rem; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--discord);
+  }
+
+  .stat-num.danger { color: var(--danger); }
+  .stat-num.warn { color: var(--warn); }
+
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-weight: 300; }
+
+  /* REACTION CARDS */
+  .reactions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .reaction {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.25s;
+  }
+
+  .reaction:hover { border-color: rgba(88,101,242,0.35); }
+
+  .reaction-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  .reaction-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .reaction-text {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ALERT */
+  .alert {
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .alert-warn { background: rgba(250,166,26,0.07); border: 1px solid rgba(250,166,26,0.2); }
+  .alert-danger { background: rgba(237,66,69,0.07); border: 1px solid rgba(237,66,69,0.2); }
+  .alert-info { background: rgba(88,101,242,0.07); border: 1px solid rgba(88,101,242,0.2); }
+
+  .alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .alert-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .alert-warn .alert-title { color: var(--warn); }
+  .alert-danger .alert-title { color: var(--danger); }
+  .alert-info .alert-title { color: var(--discord); }
+
+  .alert p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* FAQ */
+  .faq { margin-top: 2rem; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    text-align: left;
+    padding: 1.25rem 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+
+  .faq-q:hover { color: var(--discord); }
+  .faq-q span { font-size: 1.2rem; transition: transform 0.3s; flex-shrink: 0; }
+  .faq-q.open span { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .faq-a p {
+    padding-bottom: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 5rem;
+    padding: 2.5rem 7vw;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--muted); letter-spacing: 0.08em; }
+  .footer-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    opacity: 0.45;
+    max-width: 420px;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* FICTIONAL NOTICE BANNER */
+  .fiction-banner {
+    background: rgba(240,192,64,0.1);
+    border-bottom: 1px solid rgba(240,192,64,0.2);
+    padding: 0.6rem 7vw;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-label">BREAKING</span>
+  <span class="ticker-track">
+    DISCORD BANNED STATEWIDE IN MARYLAND &nbsp;•&nbsp; GOVERNOR WES MOORE SIGNS SB-441 INTO LAW &nbsp;•&nbsp; PUNDIT BRAD SHAPEMAN CREDITED AS KEY LOBBYIST BEHIND BAN &nbsp;•&nbsp; MARYLAND HOUSE PASSES 72-68 IN RAZOR-THIN VOTE &nbsp;•&nbsp; DISCORD INC. ANNOUNCES LEGAL CHALLENGE &nbsp;•&nbsp; MILLIONS OF MARYLANDERS FACE APP BLACKOUT BY MONTH'S END &nbsp;•&nbsp; DISCORD BANNED STATEWIDE IN MARYLAND &nbsp;•&nbsp; GOVERNOR WES MOORE SIGNS SB-441 INTO LAW &nbsp;•&nbsp; PUNDIT BRAD SHAPEMAN CREDITED AS KEY LOBBYIST BEHIND BAN &nbsp;•&nbsp; MARYLAND HOUSE PASSES 72-68 IN RAZOR-THIN VOTE &nbsp;•&nbsp; DISCORD INC. ANNOUNCES LEGAL CHALLENGE &nbsp;•&nbsp; MILLIONS OF MARYLANDERS FACE APP BLACKOUT BY MONTH'S END &nbsp;•&nbsp;
+  </span>
+</div>
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">MARYLAND <span>DIGITAL</span> GAZETTE</div>
+  <div class="nav-date">VOL. 14 &nbsp;//&nbsp; EST. 2019 &nbsp;//&nbsp; ANNAPOLIS, ML</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-eyebrow">
+    <span class="tag tag-breaking">Breaking News</span>
+    <span class="tag tag-state">State Legislature</span>
+  </div>
+  <h1>
+    <em>DISCORD</em><br>
+    <span class="red">BANNED</span><br>
+    IN MARYLAND
+  </h1>
+  <p class="hero-deck">
+    In a stunning and deeply contested vote, the Maryland House of Legislature narrowly passed Senate Bill 441 — the <strong>"Children's Cognitive Protection from Digital Platforms Act"</strong> — effectively banning Discord for all residents of the state. Governor <strong>Wes Moore</strong> signed the bill within hours. The margin: just four votes.
+  </p>
+  <div class="hero-meta">
+    <span>By Staff Reporter C. Ortega</span>
+    <span>State Legislature, Annapolis</span>
+    <span>SB-441 // Signed into Law</span>
+  </div>
+
+  <!-- VOTE SCOREBOARD -->
+  <div class="vote-board" id="voteboard">
+    <div class="vote-title">Maryland House Floor Vote — SB-441</div>
+    <div class="vote-bars">
+      <div class="vote-row">
+        <div class="vote-label yea">YEA</div>
+        <div class="vote-bar-bg">
+          <div class="vote-bar-fill fill-yea" data-width="51.4" id="bar-yea">71 in favor</div>
+        </div>
+        <div class="vote-count yea">72</div>
+      </div>
+      <div class="vote-row">
+        <div class="vote-label nay">NAY</div>
+        <div class="vote-bar-bg">
+          <div class="vote-bar-fill fill-nay" data-width="48.6" id="bar-nay">69 against</div>
+        </div>
+        <div class="vote-count nay">68</div>
+      </div>
+      <div class="vote-row">
+        <div class="vote-label abs">ABS</div>
+        <div class="vote-bar-bg">
+          <div class="vote-bar-fill fill-abs" data-width="4.3" id="bar-abs">6 absent</div>
+        </div>
+        <div class="vote-count abs">6</div>
+      </div>
+    </div>
+    <div class="vote-footnote">// TOTAL SEATS: 146 &nbsp;|&nbsp; MAJORITY REQUIRED: 70 &nbsp;|&nbsp; RESULT: PASSED BY 1 VOTES &nbsp;|&nbsp; SESSION DATE: May 9th</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- THE STORY -->
+  <section>
+    <div class="two-col reveal">
+      <div>
+        <div class="section-label">// The Story</div>
+        <h2>How Maryland Banned Discord</h2>
+        <div class="prose">
+          <p>What began as a fringe proposal in the Maryland Senate last autumn became reality this week when Governor <strong>Wes Moore</strong> signed SB-441 into law, making Maryland the first state in the nation to issue a comprehensive, platform-specific ban on a major social app.</p>
+          <p>The bill, formally titled the <em>Children's Cognitive Protection from Digital Platforms Act</em>, prohibits internet service providers and app stores operating in Maryland from offering or facilitating access to Discord for residents under 30 — and effectively makes the platform unavailable statewide due to technical enforcement requirements.</p>
+          <p>The road to passage was anything but smooth. Three previous attempts to advance similar legislation had stalled in committee. This time, however, the bill found a powerful and unlikely ally in nationally known commentator <strong>Brad Shapeman</strong>, whose vocal lobbying effort is widely credited with flipping several moderate delegates to the Yea column in the bill's final days.</p>
+
+          <div class="blockquote">
+            <p>"Every minute a child spends on Discord is a minute their developing brain is being rewired for distraction, conflict, and chronic dopamine dependence. This is not a free speech issue. This is a public health emergency."</p>
+            <div class="blockquote-attr">— Brad Shapeman, testimony before the Maryland House Education &amp; Technology Committee</div>
+          </div>
+
+          <p>Critics called the bill an overreach that would be struck down in federal court. Supporters celebrated it as the most meaningful children's digital wellness legislation passed anywhere in the country. Nobody, on either side, expected it to actually pass.</p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">// Key Figures</div>
+        <h2>The People Behind the Ban</h2>
+        <div class="profiles">
+          <div class="profile-card">
+            <div class="profile-avatar">🏛️</div>
+            <div class="profile-name">Gov. Wes Moore</div>
+            <div class="profile-title">Governor of Maryland</div>
+            <div class="profile-bio">A former army officer and social entrepreneur, Governor Moore had been publicly skeptical of tech regulation for most of his first term. His reversal on SB-441, signed just 11 hours after the House vote, shocked observers and allies alike.</div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-avatar">🎙️</div>
+            <div class="profile-name">Brad Shapeman</div>
+            <div class="profile-title">Political Commentator &amp; Lobbyist</div>
+            <div class="profile-bio">Host of "The Shapeman Report," a nationally syndicated podcast. Shapeman spent six weeks in Annapolis personally lobbying delegates after publishing a 47-page white paper titled <em>"Discord and the Death of the Adolescent Mind."</em></div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-avatar">📋</div>
+            <div class="profile-name">Sen. Delores Pittman</div>
+            <div class="profile-title">Bill Sponsor, Senate District 12</div>
+            <div class="profile-bio">The three-term senator from Oakdale introduced the first version of the bill in 2022 after her teenage son became what she described as "completely unreachable" due to Discord usage. Her fourth attempt finally succeeded.</div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-avatar">⚖️</div>
+            <div class="profile-name">Del. Marcus Trent</div>
+            <div class="profile-title">House Minority Leader (Against)</div>
+            <div class="profile-bio">Led the opposition bloc, calling the bill "constitutionally illiterate" and "a solution in search of a problem." His coalition came within two delegate flips of defeating the measure. He has vowed to challenge the law in court.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SHAPEMAN ANGLE -->
+  <section class="reveal">
+    <div class="section-label">// The Shapeman Factor</div>
+    <h2>How One Commentator Flipped a Legislature</h2>
+    <div class="two-col">
+      <div class="prose">
+        <p>In the six weeks leading up to the final House vote, Brad Shapeman made Annapolis his second home. Sources inside the legislature say he held private meetings with at least <strong>19 undecided delegates</strong>, presenting a mixture of neuroscience research, anecdotal testimony from parents, and his signature rapid-fire rhetorical style.</p>
+        <p>His central argument: that Discord, unlike other social platforms, was uniquely dangerous because it created <strong>always-on voice and text communities</strong> that children entered and never left — disrupting sleep, attention, and real-world social development in measurable ways.</p>
+        <p>He commissioned a poll showing that <strong>74% of Maryland parents</strong> supported some form of restriction on Discord for minors. He then walked that poll into the offices of delegates in competitive districts who were facing re-election.</p>
+
+        <div class="blockquote">
+          <p>"I brought the facts. I brought the parents. I brought the science. All I did was make sure the delegates couldn't pretend they hadn't heard it."</p>
+          <div class="blockquote-attr">— Brad Shapeman, post-vote press conference</div>
+        </div>
+
+        <p>His critics, including several tech policy researchers, disputed the quality of the studies he cited and accused him of <strong>cherry-picking data</strong> to support a predetermined conclusion. A rebuttal white paper signed by 34 academics was submitted to the legislature — but arrived two days after the committee vote had already advanced the bill to the floor.</p>
+      </div>
+      <div>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num warn">47</div>
+            <div class="stat-label">pages in Shapeman's white paper on Discord "brain harm"</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">19</div>
+            <div class="stat-label">undecided delegates he met with personally</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num danger">6</div>
+            <div class="stat-label">weeks spent lobbying in Annapolis full-time</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">74%</div>
+            <div class="stat-label">of Maryland parents polled supported some form of Discord restriction</div>
+          </div>
+        </div>
+
+        <div class="alert alert-warn">
+          <div class="alert-icon">⚠️</div>
+          <div>
+            <div class="alert-title">Disputed Science</div>
+            <p>Multiple academics and researchers publicly disputed the studies cited in Shapeman's white paper, arguing his conclusions overstated the evidence and ignored conflicting research. A formal rebuttal was submitted but arrived after the committee vote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIMELINE -->
+  <section class="reveal">
+    <div class="section-label">// How We Got Here</div>
+    <h2>Timeline of the Ban</h2>
+    <div class="two-col">
+      <div class="timeline">
+        <div class="tl-event">
+          <div class="tl-date">OCTOBER — YEAR ONE</div>
+          <div class="tl-title">First Bill Introduced, Dies in Committee</div>
+          <div class="tl-desc">Sen. Pittman introduces the original "Youth Digital Wellness Act." It fails to make it out of the Education Committee, dismissed as legally unworkable.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">MARCH — YEAR TWO</div>
+          <div class="tl-title">Second Attempt Fails on Procedural Vote</div>
+          <div class="tl-desc">A revised version advances to the House floor but is tabled on a procedural motion, 81-65.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">SEPTEMBER — YEAR THREE</div>
+          <div class="tl-title">Brad Shapeman Publishes White Paper</div>
+          <div class="tl-desc">"Discord and the Death of the Adolescent Mind" is published and goes viral, downloaded over 400,000 times. Shapeman announces he will lobby personally in Annapolis.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">JANUARY — YEAR FOUR</div>
+          <div class="tl-title">SB-441 Introduced with Bipartisan Co-Sponsors</div>
+          <div class="tl-desc">For the first time, the bill gains co-sponsors from both parties, a development attributed directly to Shapeman's lobbying meetings the previous autumn.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">FEBRUARY — YEAR FOUR</div>
+          <div class="tl-title">Passes Senate 28-19</div>
+          <div class="tl-desc">The Senate passes the bill by a wider margin than expected after an emotional floor speech by Sen. Pittman goes viral on social media.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">MARCH 11 — YEAR FOUR</div>
+          <div class="tl-title">House Vote: 72-68. Bill Passes.</div>
+          <div class="tl-desc">After three days of floor debate, the House passes SB-441 by the narrowest margin in recent Maryland legislative history. Six delegates are absent.</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">MARCH 14 — YEAR FOUR</div>
+          <div class="tl-title">Governor Moore Signs SB-441 into Law</div>
+          <div class="tl-desc">In a ceremony without public notice, Gov. Moore signs the bill at 11:47 PM. His spokesperson says he acted quickly to "demonstrate resolve." Effective date: 90 days.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-top:0;">//  Reactions</div>
+        <h2>What People Are Saying</h2>
+        <div class="reactions">
+          <div class="reaction">
+            <div class="reaction-icon">😤</div>
+            <div>
+              <div class="reaction-name">Discord Inc. — Official Statement</div>
+              <div class="reaction-text">"This law is unconstitutional, unenforceable, and contrary to the values of free expression. We will pursue every available legal avenue to protect our users in Maryland."</div>
+            </div>
+          </div>
+          <div class="reaction">
+            <div class="reaction-icon">🎉</div>
+            <div>
+              <div class="reaction-name">Brad Shapeman — Post-Signing Tweet</div>
+              <div class="reaction-text">"MARYLAND DID IT. The first domino has fallen. Every state in the nation should follow. Your children's brains thank Governor Moore."</div>
+            </div>
+          </div>
+          <div class="reaction">
+            <div class="reaction-icon">😤</div>
+            <div>
+              <div class="reaction-name">Del. Marcus Trent — Press Conference</div>
+              <div class="reaction-text">"This is government overreach of the highest order, driven by a podcast host who has never written legislation in his life. We will see this law dismantled in federal court."</div>
+            </div>
+          </div>
+          <div class="reaction">
+            <div class="reaction-icon">😐</div>
+            <div>
+              <div class="reaction-name">Gov. Wes Moore — Signing Statement</div>
+              <div class="reaction-text">"I did not take this decision lightly. But when the evidence is this clear and the stakes are this high — the health of our children — a governor must act."</div>
+            </div>
+          </div>
+          <div class="reaction">
+            <div class="reaction-icon">😂</div>
+            <div>
+              <div class="reaction-name">Maryland Discord Users — Reddit Thread</div>
+              <div class="reaction-text">"I moved to a different state just to keep my server alive. I am not joking. I loaded everything into my car. The gaming community will not fall."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- THE CLOSE VOTE -->
+  <section class="reveal">
+    <div class="section-label">// Inside the Vote</div>
+    <h2>The Four Votes That Changed Everything</h2>
+    <div class="prose" style="max-width: 720px;">
+      <p>The final margin of <strong>72-68</strong> masked just how close the bill came to failing. As recently as 72 hours before the vote, internal whip counts circulating among House leadership showed the bill losing 66-72 — a reversal of the eventual outcome.</p>
+      <p>What changed? According to multiple sources within the legislature, <strong>four delegates</strong> from competitive suburban districts flipped in the final 48 hours. All four had received personal calls from Governor Moore's office. Two had met privately with Shapeman. One later told the Gazette that she changed her vote after watching a presentation Shapeman gave at a parent-teacher association meeting in her district the weekend before the vote.</p>
+      <p>The six absences also drew scrutiny. At least <strong>three of the absent delegates</strong> were known Nay votes who, according to colleagues, quietly arranged travel conflicts to avoid casting a recorded vote against a bill they feared would be used against them in campaign advertising.</p>
+    </div>
+
+    <div class="alert alert-danger" style="max-width:720px;">
+      <div class="alert-icon">🚨</div>
+      <div>
+        <div class="alert-title">What the Law Actually Does</div>
+        <p>SB-441 requires ISPs and app store operators in Maryland to block access to Discord within 90 days of signing. It also prohibits Maryland-registered businesses from advertising on the platform. Enforcement falls to the Maryland Office of Consumer Digital Affairs, a newly created agency with a $4.2M annual budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="reveal">
+    <div class="section-label">// FAQ</div>
+    <h2>What Residents Are Asking</h2>
+    <div class="faq">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will I actually lose access to Discord? <span>+</span></button>
+        <div class="faq-a"><p>Under SB-441, ISPs operating in Maryland will be required to block Discord's domains and IP ranges within 90 days. App stores must remove the app for Maryland-registered accounts. VPN use is not explicitly addressed in the legislation, though the Attorney General's office has indicated it will issue guidance on the matter.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is this actually legal? <span>+</span></button>
+        <div class="faq-a"><p>That's the central question. Discord Inc. has announced it will challenge the law on First Amendment and Commerce Clause grounds. Several constitutional scholars have publicly stated they believe the law will not survive federal court scrutiny. Supporters argue it falls within states' police powers to protect minors. The case is expected to reach federal district court within weeks of the law taking effect.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Why Discord specifically and not other platforms? <span>+</span></button>
+        <div class="faq-a"><p>Shapeman's white paper argued that Discord's combination of always-on voice chat, server-based persistent communities, and lack of parental visibility tools made it uniquely harmful compared to other platforms. Critics say this reasoning is arbitrary and that similar arguments could apply to dozens of other apps — setting a dangerous precedent for platform-specific bans.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What does Governor Moore say about the backlash? <span>+</span></button>
+        <div class="faq-a"><p>In a statement released the morning after signing, Governor Moore's office acknowledged "the passionate response from the community" and said the Governor "welcomes the legal process" to validate the constitutionality of the law. He is scheduled to appear on the Shapeman Report next week in his first extended interview since signing.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Could other states follow Maryland's lead? <span>+</span></button>
+        <div class="faq-a"><p>Shapeman has stated publicly that he intends to bring "the same campaign" to at least five other states. Legislative aides in two neighboring states confirmed to the Gazette that they have already fielded calls from Shapeman's office requesting meetings. Whether those efforts gain traction will likely depend heavily on the outcome of Discord's legal challenge in Maryland.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">MARYLAND DIGITAL GAZETTE</div>
+  <div class="footer-note">
+    ⚠ FICTIONAL SATIRE. All persons, legislation, events, and institutions depicted in this publication are entirely fictional. Any resemblance to real persons, living or dead, or to real events is coincidental and unintended. Created for entertainment purposes only.
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  // Animate vote bars when scoreboard enters view
+  const voteObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.vote-bar-fill').forEach(bar => {
+        const w = bar.dataset.width;
+        setTimeout(() => { bar.style.width = w + '%'; }, 300);
+      });
+      voteObserver.disconnect();
+    }
+  }, { threshold: 0.5 });
+  voteObserver.observe(document.getElementById('voteboard'));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+</script>
+</body>
+</html>
