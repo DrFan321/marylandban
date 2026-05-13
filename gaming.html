@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marylandia Gaming Scene — Marylandia Digital Gazette</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0f; --surface:#111118; --card:#16161f; --border:#252535;
+    --discord:#5865F2; --danger:#ed4245; --warn:#faa61a; --green:#3ba55c;
+    --text:#e8e8f0; --muted:#6e6e95; --accent:#eb459e; --gold:#f0c040;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:999;}
+
+  .ticker-wrap{background:var(--green);overflow:hidden;white-space:nowrap;padding:7px 0;}
+  .ticker-label{display:inline-block;background:#fff;color:var(--green);font-family:'Space Mono',monospace;font-size:0.68rem;font-weight:700;padding:2px 12px;margin-right:1.5rem;letter-spacing:0.15em;}
+  .ticker-track{display:inline-block;animation:ticker 50s linear infinite;font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:#fff;}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .fiction-banner{background:rgba(240,192,64,0.08);border-bottom:1px solid rgba(240,192,64,0.18);padding:0.55rem 6vw;font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--gold);letter-spacing:0.1em;text-align:center;}
+
+  nav{border-bottom:1px solid var(--border);padding:0 6vw;display:flex;gap:0;overflow-x:auto;background:rgba(10,10,15,0.97);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);}
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.08em;padding:0.8rem 0;margin-right:2rem;white-space:nowrap;}
+  .nav-brand span{color:var(--discord);}
+  .nav-link{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:0.85rem 1rem;border-bottom:2px solid transparent;white-space:nowrap;transition:color 0.2s,border-color 0.2s;text-decoration:none;display:block;}
+  .nav-link:hover,.nav-link.active{color:var(--text);border-bottom-color:var(--green);}
+
+  .page{max-width:1100px;margin:0 auto;padding:0 6vw;}
+
+  /* HERO */
+  .article-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .article-header-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 80% 40%,rgba(59,165,92,0.09) 0%,transparent 65%);pointer-events:none;}
+  .breadcrumb{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:1.25rem;}
+  .breadcrumb a{color:var(--discord);text-decoration:none;}
+  .article-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .atag{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.25em 0.8em;border-radius:2px;border:1px solid currentColor;}
+  .atag-gaming{color:var(--green);}
+  .atag-culture{color:var(--accent);}
+  .atag-feature{color:var(--gold);background:rgba(240,192,64,0.08);}
+
+  .article-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:0.93;letter-spacing:0.02em;margin-bottom:1.25rem;position:relative;z-index:1;}
+  .article-header h1 em{color:var(--green);font-style:normal;}
+  .article-deck{font-size:1.05rem;color:var(--muted);max-width:640px;line-height:1.75;font-weight:300;position:relative;z-index:1;}
+  .article-meta{display:flex;align-items:center;gap:1.5rem;margin-top:1.5rem;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--muted);flex-wrap:wrap;position:relative;z-index:1;}
+  .article-meta span::before{content:'// ';color:var(--green);}
+
+  .article-layout{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;padding:3rem 0;align-items:start;}
+  @media(max-width:800px){.article-layout{grid-template-columns:1fr;}}
+
+  /* BODY */
+  .article-body h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin:2.5rem 0 0.75rem;}
+  .article-body p{color:var(--muted);font-size:0.97rem;line-height:1.85;margin-bottom:1.1rem;font-weight:300;}
+  .article-body p strong{color:var(--text);font-weight:500;}
+  .article-body p em{color:var(--green);font-style:italic;}
+
+  .blockquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:2rem 0;background:rgba(59,165,92,0.05);border-radius:0 6px 6px 0;}
+  .blockquote p{font-size:1.02rem!important;font-style:italic;color:var(--text)!important;line-height:1.6!important;margin-bottom:0.4rem!important;}
+  .blockquote-attr{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--muted);}
+
+  /* PROFILE SPOTLIGHT */
+  .spotlight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;margin:2rem 0;}
+  .spotlight-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+  .spotlight-card:hover{border-color:rgba(59,165,92,0.45);transform:translateY(-3px);}
+  .spotlight-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green);}
+  .sp-icon{font-size:2rem;margin-bottom:0.75rem;}
+  .sp-name{font-family:'Space Mono',monospace;font-size:0.9rem;color:var(--text);margin-bottom:0.15rem;}
+  .sp-sub{font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--green);margin-bottom:0.75rem;letter-spacing:0.1em;}
+  .sp-desc{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+
+  /* STATS */
+  .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:2rem 0;}
+  .stat{background:var(--surface);padding:1.5rem 1.25rem;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;color:var(--green);}
+  .stat-num.accent{color:var(--accent);}
+  .stat-num.gold{color:var(--gold);}
+  .stat-num.discord{color:var(--discord);}
+  .stat-label{font-size:0.75rem;color:var(--muted);margin-top:0.3rem;font-weight:300;}
+
+  /* VENUE CARDS */
+  .venue-list{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+  .venue-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:center;transition:border-color 0.25s;}
+  .venue-card:hover{border-color:rgba(59,165,92,0.35);}
+  .venue-icon{font-size:2rem;}
+  .venue-name{font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text);margin-bottom:0.2rem;}
+  .venue-loc{font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--green);letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .venue-desc{font-size:0.83rem;color:var(--muted);line-height:1.55;}
+
+  /* ALERT */
+  .alert{border-radius:8px;padding:1.25rem 1.5rem;margin:2rem 0;display:flex;gap:1rem;align-items:flex-start;}
+  .alert-info{background:rgba(88,101,242,0.07);border:1px solid rgba(88,101,242,0.2);}
+  .alert-green{background:rgba(59,165,92,0.07);border:1px solid rgba(59,165,92,0.2);}
+  .alert-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+  .alert-title{font-family:'Space Mono',monospace;font-size:0.72rem;font-weight:700;margin-bottom:0.3rem;}
+  .alert-info .alert-title{color:var(--discord);}
+  .alert-green .alert-title{color:var(--green);}
+  .alert p{font-size:0.84rem;color:var(--muted);line-height:1.6;}
+
+  /* SIDEBAR */
+  .sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;}
+  .sidebar-card-title{font-family:'Space Mono',monospace;font-size:0.63rem;letter-spacing:0.15em;color:var(--green);margin-bottom:0.9rem;text-transform:uppercase;}
+  .sidebar-card p{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:0.6rem;}
+  .sidebar-card p:last-child{margin-bottom:0;}
+  .sidebar-card p strong{color:var(--text);}
+
+  .related-link{display:flex;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--border);align-items:flex-start;text-decoration:none;}
+  .related-link:last-child{border-bottom:none;padding-bottom:0;}
+  .related-link:hover .rl-title{color:var(--discord);}
+  .rl-icon{font-size:1.4rem;flex-shrink:0;}
+  .rl-tag{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:0.2rem;}
+  .rl-title{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--text);line-height:1.4;transition:color 0.2s;}
+
+  /* UPCOMING EVENTS TABLE */
+  .events-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.84rem;}
+  .events-table th{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--green);text-transform:uppercase;text-align:left;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);}
+  .events-table td{padding:0.75rem;border-bottom:1px solid rgba(37,37,53,0.6);color:var(--muted);vertical-align:top;}
+  .events-table td strong{color:var(--text);}
+  .events-table tr:hover td{background:rgba(59,165,92,0.03);}
+  .ev-tag{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;padding:0.2em 0.6em;border-radius:2px;}
+  .ev-esports{background:rgba(88,101,242,0.12);color:var(--discord);}
+  .ev-indie{background:rgba(235,69,158,0.12);color:var(--accent);}
+  .ev-lan{background:rgba(59,165,92,0.12);color:var(--green);}
+  .ev-expo{background:rgba(240,192,64,0.12);color:var(--gold);}
+
+  footer{margin-top:4rem;padding:2rem 6vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--muted);letter-spacing:0.08em;}
+  .footer-note{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--muted);opacity:0.4;max-width:480px;text-align:right;line-height:1.7;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <span class="ticker-label">GAMING</span>
+  <span class="ticker-track">
+    MARYLANDIA GAMING EXPO SELLS OUT FOR THIRD CONSECUTIVE YEAR &nbsp;•&nbsp; ANNAPOLIS ESPORTS PROGRAM RANKED TOP 10 NATIONALLY &nbsp;•&nbsp; THREE MARYLANDIA INDIE STUDIOS SHORTLISTED FOR NATIONAL AWARDS &nbsp;•&nbsp; LAN CAFÉ RENAISSANCE SWEEPING THE STATE &nbsp;•&nbsp; MARYLANDIA GAMING EXPO SELLS OUT FOR THIRD CONSECUTIVE YEAR &nbsp;•&nbsp; ANNAPOLIS ESPORTS PROGRAM RANKED TOP 10 NATIONALLY &nbsp;•&nbsp; THREE MARYLANDIA INDIE STUDIOS SHORTLISTED FOR NATIONAL AWARDS &nbsp;•&nbsp; LAN CAFÉ RENAISSANCE SWEEPING THE STATE &nbsp;•&nbsp;
+  </span>
+</div>
+
+<div class="fiction-banner">⚠ FICTIONAL SATIRE — All names, events, and legislation depicted are entirely fictional and created for entertainment purposes only.</div>
+
+<nav>
+  <div class="nav-brand">MDG <span>//</span></div>
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="discord-ban.html">Discord Ban</a>
+  <a class="nav-link" href="legal-challenge.html">Legal Challenge</a>
+  <a class="nav-link" href="other-states.html">Other States</a>
+  <a class="nav-link active" href="gaming.html">Gaming</a>
+</nav>
+
+<div class="page">
+  <div class="article-header reveal">
+    <div class="article-header-bg"></div>
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="gaming.html">Gaming & Culture</a> / Feature</div>
+    <div class="article-tags">
+      <span class="atag atag-feature">Feature</span>
+      <span class="atag atag-gaming">Gaming</span>
+      <span class="atag atag-culture">Culture</span>
+    </div>
+    <h1>Pixels & <em>Pride:</em><br>Marylandia's Gaming Scene Is Winning</h1>
+    <p class="article-deck">Before the Discord ban, after the Discord ban, and regardless of what any court decides — Marylandia has quietly built one of the most vibrant regional gaming communities in the country. We went to find out why.</p>
+    <div class="article-meta">
+      <span>By D. Kim, Culture Correspondent</span>
+      <span>Annapolis & Beyond</span>
+      <span>Gaming & Culture Desk</span>
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <div class="article-body reveal">
+
+      <p>Walk into the <strong>Pixel Haus</strong> LAN café in downtown Annapolis on a Friday night and you'll find every seat taken. College students in Marylandia State sweatshirts run scrimmages alongside thirty-somethings who drove forty minutes from the suburbs for their weekly session. A handwritten leaderboard on the back wall tracks tournament standings for six different games. The owner, a former network engineer named <strong>Terrell Banks</strong>, doesn't look like a man worried about Discord.</p>
+      <p>"Discord is a chat app," he says, refilling the coffee machine without breaking eye contact. "Gaming is a culture. You can't ban a culture."</p>
+      <p>He's not wrong. Whatever the outcome of SB-441's legal battle, the gaming community it's stirred up debate about has been quietly building momentum in Marylandia for years — through indie studios, collegiate esports programs, local tournaments, and a small-but-growing network of venues like Pixel Haus that have made in-person gaming social again.</p>
+
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">14</div><div class="stat-label">active indie game studios registered in Marylandia</div></div>
+        <div class="stat"><div class="stat-num accent">7</div><div class="stat-label">collegiate esports programs at Marylandia universities</div></div>
+        <div class="stat"><div class="stat-num gold">23</div><div class="stat-label">LAN cafés operating statewide — up from 8 five years ago</div></div>
+        <div class="stat"><div class="stat-num discord">$4.1M</div><div class="stat-label">estimated annual economic impact of the gaming sector</div></div>
+      </div>
+
+      <h2>The Indie Studio Scene</h2>
+      <p>The most significant development in Marylandia gaming over the past five years has been the quiet emergence of a genuine indie development community, centered loosely around Annapolis and the university corridors of central Marylandia.</p>
+      <p>Three studios in particular have broken through to national attention. <strong>Greywater Games</strong>, founded by two Marylandia State graduates in a spare bedroom four years ago, released <em>Tideline</em> last spring to critical acclaim — a narrative puzzle game set on a flooded Chesapeake-inspired coastline that sold over 80,000 copies on its first weekend and was shortlisted for three national indie awards.</p>
+      <p><strong>Hollow Compass Studio</strong> has taken a different path, building a small but obsessively loyal following with its ongoing series of lo-fi horror games set in fictional small-town Marylandia. Their most recent release, <em>Route 7 After Dark</em>, hit the top of the indie charts for two weeks and spawned a YouTube analysis community that dissects its lore with the intensity usually reserved for prestige television.</p>
+
+      <div class="blockquote">
+        <p>"We set our games here because this place has a specific feeling that we haven't seen represented in games before — the backroads, the bay, the way the light looks in October. People respond to that. It turns out everywhere has a specific feeling that games haven't captured yet."</p>
+        <div class="blockquote-attr">— Mara Osei, co-founder, Greywater Games</div>
+      </div>
+
+      <h2>The Studios to Know</h2>
+      <div class="spotlight-grid">
+        <div class="spotlight-card">
+          <div class="sp-icon">🌊</div>
+          <div class="sp-name">Greywater Games</div>
+          <div class="sp-sub">Annapolis // Founded 2020</div>
+          <div class="sp-desc">Known for narrative puzzle games with stunning environmental storytelling. Their debut <em>Tideline</em> put Marylandia on the indie map. Currently in development on an unannounced second title with a rumored team of twelve.</div>
+        </div>
+        <div class="spotlight-card">
+          <div class="sp-icon">🌑</div>
+          <div class="sp-name">Hollow Compass Studio</div>
+          <div class="sp-sub">Eastport // Founded 2019</div>
+          <div class="sp-desc">Masters of lo-fi atmospheric horror. The <em>Route 7</em> series has a cult following that would make most major publishers jealous. Four-person team, zero interest in being acquired, very online presence.</div>
+        </div>
+        <div class="spotlight-card">
+          <div class="sp-icon">⚔️</div>
+          <div class="sp-name">Ironfield Interactive</div>
+          <div class="sp-sub">Glenburnie // Founded 2022</div>
+          <div class="sp-desc">The newest name on the scene and perhaps the most ambitious. Their tactical RPG <em>Grit & Compass</em> is in early access and already has 12,000 players. Watch this space.</div>
+        </div>
+      </div>
+
+      <h2>Esports on the Rise</h2>
+      <p>Four years ago, Marylandia State University launched the state's first varsity esports program almost as an experiment, allocating a modest budget and a converted computer lab. Today it fields eight competitive teams, has a dedicated 200-seat arena built into the student union, and finished last season ranked <strong>seventh nationally</strong> in collegiate esports standings.</p>
+      <p>Six other Marylandia colleges and universities have followed suit. The Marylandia Collegiate Esports Conference — formed just two years ago — now coordinates a full regular season and playoffs across the state, drawing crowds and, increasingly, attention from national recruiting scouts.</p>
+      <p><strong>Coach Denise Yao</strong> of Marylandia State, who built the program from scratch, pushes back gently on the idea that the Discord ban controversy is bad for esports. "Honestly? It's put eyes on us that wouldn't have been there otherwise. People are writing about Marylandia gaming for the first time. Not all publicity is bad publicity."</p>
+
+      <div class="alert alert-green">
+        <div class="alert-icon">🏆</div>
+        <div>
+          <div class="alert-title">Marylandia State Esports — By the Numbers</div>
+          <p>8 competitive teams. 200-seat arena. 7th nationally in collegiate standings last season. 6 players signed to semi-professional organizations since the program launched. Currently recruiting for fall.</p>
+        </div>
+      </div>
+
+      <h2>The LAN Café Renaissance</h2>
+      <p>The number that surprises most people: Marylandia now has <strong>23 operating LAN cafés</strong>, up from just 8 five years ago. In an era when conventional wisdom said dedicated gaming spaces were obsolete — everyone has a gaming PC at home, the logic went — Marylandia's community went the other direction.</p>
+      <p>The owners credit a simple insight: playing games alone at home and playing with people in a room are fundamentally different experiences, and a growing number of players want both. The social dimension — trash talk, shared snacks, the collective groan at a missed shot — is something a headset and a text channel can approximate but not replace.</p>
+      <p>Terrell Banks, who opened Pixel Haus six years ago after a career in IT, has watched three competitors open within ten minutes of his shop. He's not worried. "A rising tide," he says. "When there are more places to go, more people decide gaming is something they do socially. We all win."</p>
+
+      <h2>Where to Find the Scene</h2>
+      <div class="venue-list">
+        <div class="venue-card">
+          <div class="venue-icon">🖥️</div>
+          <div>
+            <div class="venue-name">Pixel Haus</div>
+            <div class="venue-loc">Downtown Annapolis</div>
+            <div class="venue-desc">The flagship of the Marylandia LAN scene. 40 stations, weekly tournaments, notoriously good coffee. Friday nights book up a week in advance. Hosts the annual Marylandia Invitational each October.</div>
+          </div>
+        </div>
+        <div class="venue-card">
+          <div class="venue-icon">🎮</div>
+          <div>
+            <div class="venue-name">The Loading Screen</div>
+            <div class="venue-loc">Glenburnie</div>
+            <div class="venue-desc">Indie-focused café with a rotating showcase wall featuring games made by Marylandia developers. The only venue in the state where you can play Greywater Games titles on a 40-inch monitor with a dev commentary track enabled.</div>
+          </div>
+        </div>
+        <div class="venue-card">
+          <div class="venue-icon">🕹️</div>
+          <div>
+            <div class="venue-name">Respawn Lounge</div>
+            <div class="venue-loc">East Annapolis</div>
+            <div class="venue-desc">Newest addition to the scene, opened eight months ago. Known for its competitive fighting game community and the best snack menu in the state. Monthly open tournaments with cash prizes.</div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Upcoming Events</h2>
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Location</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Marylandia Gaming Expo</strong></td>
+            <td><span class="ev-tag ev-expo">Expo</span></td>
+            <td>Annapolis Convention Center</td>
+            <td>3-day event. Sold out for third consecutive year.</td>
+          </tr>
+          <tr>
+            <td><strong>Pixel Haus Invitational</strong></td>
+            <td><span class="ev-tag ev-lan">LAN</span></td>
+            <td>Pixel Haus, Downtown Annapolis</td>
+            <td>Annual flagship tournament. Multi-game format. Registration open.</td>
+          </tr>
+          <tr>
+            <td><strong>MLCE Spring Finals</strong></td>
+            <td><span class="ev-tag ev-esports">Esports</span></td>
+            <td>Marylandia State University Arena</td>
+            <td>Collegiate conference championship. Free to attend.</td>
+          </tr>
+          <tr>
+            <td><strong>Greywater Dev Panel</strong></td>
+            <td><span class="ev-tag ev-indie">Indie</span></td>
+            <td>The Loading Screen, Glenburnie</td>
+            <td>Mara Osei and team discuss their next project. Limited seating.</td>
+          </tr>
+          <tr>
+            <td><strong>Respawn Open</strong></td>
+            <td><span class="ev-tag ev-lan">LAN</span></td>
+            <td>Respawn Lounge, East Annapolis</td>
+            <td>Fighting game open. $500 prize pool. Walk-ins welcome.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="alert alert-info">
+        <div class="alert-icon">💬</div>
+        <div>
+          <div class="alert-title">On the Discord Question</div>
+          <p>It would be dishonest not to acknowledge it: Discord is how a significant portion of Marylandia's gaming community organizes itself — server invites pinned to tournament flyers, dev update channels, pickup game coordination. If the ban survives its legal challenge, that infrastructure moves somewhere else. The community, by all accounts, intends to keep going regardless. As one tournament organizer put it: "We organized with IRC before Discord. We'll organize with whatever comes next."</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Quick Facts</div>
+        <p><strong>14</strong> active indie studios in the state</p>
+        <p><strong>7</strong> collegiate esports programs</p>
+        <p><strong>23</strong> LAN cafés statewide</p>
+        <p><strong>$4.1M</strong> estimated annual economic impact</p>
+        <p><strong>3</strong> studios shortlisted for national indie awards this year</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Studios to Watch</div>
+        <p><strong>Greywater Games</strong> — Narrative puzzle, Annapolis</p>
+        <p><strong>Hollow Compass Studio</strong> — Lo-fi horror, Eastport</p>
+        <p><strong>Ironfield Interactive</strong> — Tactical RPG, Glenburnie</p>
+      </div>
+
+      <div class="sidebar-card reveal">
+        <div class="sidebar-card-title">// Related Articles</div>
+        <a class="related-link" href="discord-ban.html">
+          <div class="rl-icon">🏛️</div>
+          <div><div class="rl-tag">Politics</div><div class="rl-title">Discord Banned in Marylandia — Full Story</div></div>
+        </a>
+        <a class="related-link" href="legal-challenge.html">
+          <div class="rl-icon">⚖️</div>
+          <div><div class="rl-tag">Legal</div><div class="rl-title">Discord Rushes to Federal Court</div></div>
+        </a>
+        <a class="related-link" href="other-states.html">
+          <div class="rl-icon">🗺️</div>
+          <div><div class="rl-tag">National</div><div class="rl-title">Other States Eyeing Copycat Bans</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">MARYLANDIA DIGITAL GAZETTE</div>
+  <div class="footer-note">⚠ FICTIONAL SATIRE. All persons, legislation, events, and institutions depicted are entirely fictional. Created for entertainment purposes only.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
